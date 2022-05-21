@@ -6,6 +6,8 @@ on:
 jobs:
   PULLDATASET:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./CKANOpenDataImport
     defaults:
       run:
         working-directory: .
@@ -25,13 +27,16 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore ./CKANOpenDataImport/CKANOpenDataImport.csproj
+      run: dotnet restore ./CKANOpenDataImport.csproj
+      working-directory: ${{env.working-directory}}
     - name: Build
-      run: dotnet build ./CKANOpenDataImport/CKANOpenDataImport.csproj --no-restore
+      run: dotnet build ./CKANOpenDataImport.csproj --no-restore
+      working-directory: ${{env.working-directory}}
     - name: Run
       run: dotnet run
     - name: Copy output to folder
-      run: cp ./CKANOpenDataImport/ckan_output.csv ./data/ckan_output.csv
+      run: cp ./ckan_output.csv ./data/ckan_output.csv
+      working-directory: ${{env.working-directory}}
     - name: Run Script dcat.py
       run: python dcat.py
     - name: Run Script merge_data.py
