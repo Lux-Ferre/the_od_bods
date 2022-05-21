@@ -1,4 +1,4 @@
-name: Dataset Pull Automation
+name: Dataset Pull Automation Test
 
 on:
   workflow_dispatch
