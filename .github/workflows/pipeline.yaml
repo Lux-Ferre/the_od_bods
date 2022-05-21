@@ -1,4 +1,4 @@
-name: CKAN data scraper
+name: Dataset Pull Automation
 
 on:
   workflow_dispatch
