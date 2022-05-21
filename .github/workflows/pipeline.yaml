@@ -4,7 +4,7 @@ on:
   workflow_dispatch
 
 jobs:
-  CKAN:
+  PULLDATASET:
     runs-on: ubuntu-latest
     defaults:
       run:
